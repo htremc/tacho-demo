@@ -251,14 +251,95 @@ section[data-scene="hero"]{padding-bottom:76px}
   .fine{margin-top:10px}
   .ticker{bottom:10px}
 }
-@media (max-width:860px){
-  html,body{overflow:auto}
-  .two{grid-template-columns:1fr}
-  section.slide{height:auto;min-height:100vh}
-  .dash{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .panel{grid-column:1/-1}
-  #dots,.pot,.seal{display:none}
+/* ===== MÓVIL (vertical): cada escena cabe ENTERA en una pantalla, nada se corta ===== */
+@media (max-width:860px) and (max-aspect-ratio:1/1){
+  html,body{overflow:hidden}
+  #deck{height:100vh;height:100dvh}
+  section.slide{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:10px;padding:54px 16px 30px}
+  section[data-scene="hero"],section[data-scene="fin"]{padding-bottom:64px}
+  #dots,.pot,.seal,#bFs{display:none}
+  #top{top:10px;left:16px;right:16px;display:flex;justify-content:space-between;gap:10px}
+  #top .brand{gap:8px;font-size:.72rem}
+  #top .brand img{height:20px}
+  .ctrl button{padding:5px 10px;font-size:.6rem}
+  .eyebrow{font-size:.6rem;letter-spacing:.1em;gap:8px}
+  .eyebrow::before{width:7px;height:7px}
+  h1{font-size:clamp(1.5rem,8.2vw,2.3rem);margin:10px 0 12px}
+  h2,section[data-scene="fin"] h2{font-size:clamp(1.2rem,6.3vw,1.75rem);margin:8px 0 10px}
+  .lead{font-size:.86rem;line-height:1.45}
+  .chip{font-size:.6rem;padding:4px 9px;box-shadow:2px 2px 0 #000;border-width:1.5px}
+  .win{margin-top:12px;gap:12px}
+  .win .box{padding:6px 12px;border-radius:14px;box-shadow:4px 4px 0 var(--pista)}
+  .win.done .box{box-shadow:4px 4px 0 var(--pista),0 0 0 5px rgba(190,209,87,.25),0 0 34px rgba(190,209,87,.45)}
+  .win .n{font-size:1.45rem}
+  .win .l{font-size:.58rem}
+  .win .side{font-size:.74rem}
+  .cta{margin-top:14px;padding:11px 18px;font-size:.86rem}
+  .fine{font-size:.62rem;margin-top:12px}
+  .replay{left:auto;right:12px;bottom:7px;font-size:.6rem}
+  .ticker{bottom:12px}
+  .tk span{font-size:.78rem;padding:5px 0}
+  /* escenas con el móvil de WhatsApp: título y cifra arriba, el móvil ocupa el resto */
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy{flex:none;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"eb eb" "h h" "le le" "wi tg";column-gap:14px;align-items:center}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>.eyebrow{grid-area:eb;justify-self:start}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>h2{grid-area:h}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>.lead{grid-area:le;display:none;margin-bottom:4px}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>.tagline{grid-area:tg;margin:0;flex-direction:column;align-items:flex-start;gap:6px}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>.win{grid-area:wi;margin:4px 0 0}
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .win .side{display:none}
+  .stage{flex:1 1 0;min-height:0;width:100%;container-type:size;perspective:900px}
+  .phone{--ry:-6deg;--rx:3deg;height:min(calc(100cqh - 14px),600px);width:auto;aspect-ratio:300/610;border-radius:32px;padding:8px;
+    box-shadow:0 0 0 2px #3a302d,0 24px 50px -16px rgba(0,0,0,.8),10px 10px 0 -2px rgba(190,209,87,.35)}
+  .phone::before{top:13px;width:64px;height:17px;border-radius:10px}
+  .screen{border-radius:25px}
+  .wa-head{padding:34px 10px 8px;gap:8px}
+  .notif{top:32px}
+  .card img{height:84px}
+  /* escenas con ficha o puntos al lado del móvil */
+  .duo{gap:12px}
+  .duo .phone{height:min(calc(100cqh - 14px),600px,calc((66cqw - 22px) * 2.033))}
+  .duo .b{font-size:11.5px}
+  .prod,.meter{width:34cqw;flex:none;border-width:2px;border-radius:14px;box-shadow:5px 5px 0 #000}
+  .prod .pb{padding:7px 8px 9px}
+  .prod .pt{font-size:.78rem}
+  .prod .pp{font-size:.58rem;margin:2px 0 7px}
+  .prod .ask{font-size:.58rem;padding:6px 4px;border-radius:9px;border-width:1.5px}
+  .prod .agot{top:9px;right:-34px;font-size:.55rem;padding:3px 34px}
+  .meter{padding:10px}
+  .meter .mt{font-size:.72rem}
+  .meter .ring{width:100%;height:auto;aspect-ratio:1;margin:6px auto}
+  .meter svg{width:100%;height:100%}
+  .meter .rv2{font-size:1.35rem}
+  .meter .ms{font-size:.58rem}
+  .meter .eq{font-size:.62rem;padding:4px}
+  /* la app de Iris */
+  .dash{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .dash .hd{gap:4px}
+  .tile{padding:9px 11px;border-radius:13px;box-shadow:4px 4px 0 #000;border-width:2px}
+  .tile .k{font-size:.56rem;letter-spacing:.07em}
+  .tile .v{font-size:1.3rem;margin-top:4px}
+  .tile .s{font-size:.62rem}
+  .panel{grid-column:1/-1;height:auto;padding:10px 12px}
+  .dash>.panel:last-child{height:150px}
+  .panel h3{font-size:.8rem;margin-bottom:7px}
+  .feed li{font-size:.7rem;padding:6px 8px;gap:8px}
+  .feed .ic{width:22px;height:22px}
+  /* cierre */
+  section[data-scene="fin"] .win.big .n,.win.big .n{font-size:1.9rem}
+  .list{grid-template-columns:minmax(0,1fr);gap:6px;margin-top:12px}
+  .list div{padding:7px 11px;font-size:.76rem;border-radius:12px}
+  .list div b{font-size:1.1rem;min-width:3.4em}
+  /* portada: el bote vive debajo del texto */
+  .jarhit{flex:1 1 0;min-height:0}
 }
+@media (max-width:860px) and (max-aspect-ratio:1/1) and (min-height:800px){
+  section:is([data-scene="carrito"],[data-scene="stock"],[data-scene="upsell"],[data-scene="recompra"],[data-scene="wismo"],[data-scene="dudas"]) .copy>.lead{display:block}
+}
+@media (max-width:860px) and (max-aspect-ratio:1/1) and (max-height:819px){
+  .dash>.panel:last-child{display:none}
+}
+/* vista previa dentro de la propuesta en el móvil: va sola, como un vídeo */
+.preview .ctrl,.preview .replay,.preview .jarhit .hint{display:none}
 @media (prefers-reduced-motion:reduce){
   #grain,.bigword,.float,.screen::after,.tk,.seal svg{animation:none}
   .w>span,.rv,.enter{transition:none;transform:none;opacity:1}
@@ -534,7 +615,10 @@ const TOTALS = { carrito:32.50, stock:15.98, upsell:9.99, recompra:21.79 };
 const got = {};
 
 /* ---------- motor del chat ---------- */
-let runId = 0, cur = -1, nav = 0, auto = false;
+/* ?preview=1 · la propuesta la incrusta así en el móvil: avanza sola y vuelve a empezar, como un vídeo */
+const PREVIEW = /[?&]preview=1(&|$)/.test(location.search);
+if (PREVIEW) document.documentElement.classList.add('preview');
+let runId = 0, cur = -1, nav = 0, auto = PREVIEW;
 const prog = $('#prog i');
 const setProg = f => { prog.style.width = Math.round(Math.max(0, Math.min(1, f)) * 100) + '%'; };
 function clock(sec){ const [h,m] = sec._t.split(':').map(Number); sec._k = (sec._k||0) + (Math.random() < .55 ? 0 : 1); const t = h*60 + m + sec._k; return String(Math.floor(t/60) % 24).padStart(2,'0') + ':' + String(t % 60).padStart(2,'0'); }
@@ -664,6 +748,7 @@ function setCur(i){
   const s = slides[i]; bg.style.setProperty('--c1', s.dataset.c1); bg.style.setProperty('--c2', s.dataset.c2);
   JAR.target(s.dataset.scene);
   play(i).then(done => { if (done && auto && cur === i) setTimeout(() => { if (auto && cur === i) go(i + 1); }, 2600); });
+  if (PREVIEW && i === slides.length - 1) setTimeout(() => { if (cur === i){ nav = 0; deck.scrollTo({top:0, behavior:'instant'}); } }, 9000);
 }
 const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting && e.intersectionRatio > .55) setCur(slides.indexOf(e.target)); }); }, {root:deck, threshold:[.55, .8]});
 slides.forEach(s => io.observe(s));
@@ -777,12 +862,15 @@ const JAR = (() => {
 
   const STATES = { hero:{x:2.9, y:-.15, s:1.0}, fin:{x:3.1, y:-.1, s:.95} };
   let tgt = STATES.hero, curS = {x:2.9, y:-.15, s:1}, mx = 0, my = 0, last = 0, rot = 0, spinV = 0, boost = 0, curName = 'hero', opTimer = 0;
-  const baseOpacity = () => (STATES[curName] ? 1 : .42);
+  let mob = false; /* móvil vertical: el bote sólo en la portada y los pistachos más tenues detrás del texto */
+  const baseOpacity = () => (curName === 'hero' ? 1 : mob ? .22 : (STATES[curName] ? 1 : .42));
   api.target = name => { curName = name; const st = STATES[name]; tgt = st || {x:9.5, y:-.1, s:.6}; cv.style.opacity = baseOpacity(); };
   api.mouse = (x, y) => { mx = x; my = y; };
   api.spin = dx => { spinV += dx * .012; };
   api.celebrate = (amt = 1) => { boost = Math.min(2.2, boost + amt); cv.style.opacity = Math.max(baseOpacity(), .85); clearTimeout(opTimer); opTimer = setTimeout(() => { cv.style.opacity = baseOpacity(); }, 1700); };
-  function size(){ const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); const narrow = w < 860; STATES.hero.x = narrow ? 0 : 2.9; STATES.hero.y = narrow ? -1.6 : -.15; }
+  function size(){ const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); const narrow = w < 860; mob = narrow && h >= w;
+    STATES.hero.x = narrow ? 0 : 2.9; STATES.hero.y = mob ? -1.95 : narrow ? -1.6 : -.15; STATES.hero.s = mob ? .72 : 1;
+    STATES.fin.x = mob ? 9.5 : 3.1; if (STATES[curName]) tgt = STATES[curName]; cv.style.opacity = baseOpacity(); }
   addEventListener('resize', size); size();
   const clk = new THREE.Clock();
   (function loop(){
