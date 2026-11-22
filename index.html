@@ -877,7 +877,7 @@ const JAR = (() => {
   function size(){ const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); const narrow = w < 860; mob = narrow && h >= w;
     STATES.hero.x = narrow ? 0 : 2.9; STATES.hero.y = mob ? -1.95 : narrow ? -1.6 : -.15; STATES.hero.s = mob ? .72 : 1;
     STATES.fin.x = mob ? 9.5 : 3.1; if (STATES[curName]) tgt = STATES[curName]; cv.style.opacity = baseOpacity(); }
-  addEventListener('resize', size); size();
+  addEventListener('resize', size); size(); Object.assign(curS, STATES.hero); /* el bote nace ya en su sitio (en el móvil no cruza el texto al cargar) */
   const clk = new THREE.Clock();
   (function loop(){
     requestAnimationFrame(loop);
