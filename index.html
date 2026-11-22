@@ -656,7 +656,7 @@ async function finale(sec, w){
 const dots = $('#dots');
 slides.forEach((s, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', s.dataset.name); b.innerHTML = `<span>${s.dataset.name}</span>`; b.onclick = () => go(i); dots.appendChild(b); });
 const bg = $('#bg');
-function go(i){ i = Math.max(0, Math.min(slides.length - 1, i)); nav = i; slides[i].scrollIntoView({behavior:'smooth'}); }
+function go(i){ i = Math.max(0, Math.min(slides.length - 1, i)); nav = i; deck.scrollTo({top:slides[i].offsetTop, behavior:'smooth'}); /* sólo la demo: scrollIntoView movía también la propuesta que la incrusta */ }
 function setCur(i){
   if (i === cur) return; cur = i; nav = i;
   $$('#dots button').forEach((b, k) => b.classList.toggle('on', k === i));
